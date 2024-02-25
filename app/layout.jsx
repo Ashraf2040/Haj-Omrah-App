@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({children}) {
   return (
-    <html  lang="en" className="m-0 p-0 ">
+    <html  lang="en" className="m-0 p-0 bg-white ">
       <body className={`${inter.className} flex relative flex-col h-screen`}>
         <div>
           <Header />
