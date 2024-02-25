@@ -66,6 +66,7 @@ export async function POST(req) {
         await openai.beta.threads.messages.list(threadId, {
           after: createdMessage.id,
           order: "asc",
+          
          
          
         })

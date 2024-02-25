@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 
 import { motion, useMotionValue } from "framer-motion";
+import Link from "next/link";
 const imgs = [
   {
     title: "Mecca",
@@ -62,7 +63,7 @@ export default function SwipeCarousol() {
   };
   console.log(imgIndex);
   return (
-    <div className="relative mb-20  overflow-hidden py-8  ">
+    <div className="relative flex flex-col  overflow-hidden py-8  ">
       <motion.div
         drag="x"
         dragConstraints={{
@@ -83,6 +84,11 @@ export default function SwipeCarousol() {
         <Images imgIndex={imgIndex} SPRING_OPTIONS={SPRING_OPTIONS} />
       </motion.div>
       <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
+      <div className="w-4/5 self-center my-8">
+        <p className="font-semibold whitespace-pre-wrap   text-teal-800">
+          {imgs.map((img, idx) => (idx === imgIndex ? img.desc : null))}
+        </p>
+      </div>
     </div>
   );
 }
@@ -92,7 +98,11 @@ const Images = ({ imgIndex, SPRING_OPTIONS }) => {
     <>
       {imgs.map((img, idx) => {
         return (
-          <div key={idx} className="flex flex-col text-xl font-semibold text-green-600 items-center  ">
+          <div
+            key={idx}
+            className="flex relativ flex-col text-xl font-semibold text-green-600 items-center  "
+          >
+            <span className="absolute left-4 md: text-3xl font-bold"><Link href="/" className="text-[#B8900E]">←</Link></span>
             <h1>{img.title}</h1>
             <motion.div
               key={idx}
@@ -105,11 +115,8 @@ const Images = ({ imgIndex, SPRING_OPTIONS }) => {
                 scale: imgIndex === idx ? 0.75 : 0.55,
               }}
               transition={SPRING_OPTIONS}
-              className="  aspect-video w-screen self-center shrink-0   rounded-xl  object-cover"
+              className="  aspect-video w-screen  shrink-0   rounded-xl  object-cover"
             ></motion.div>
-            <div className="w-4/5 ">
-              <p className="font-semibold whitespace-pre-wrap mt-4 text-teal-800">{img.desc}</p>
-            </div>
           </div>
         );
       })}
