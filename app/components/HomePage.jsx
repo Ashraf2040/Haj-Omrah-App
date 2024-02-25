@@ -148,7 +148,7 @@ export default function HomePage() {
         <input
           ref={inputRef}
           disabled={status !== "awaiting_message"}
-          className="  p-4  border border-gray-300  rounded shadow-xl w-full"
+          className="  p-4  border border-gray-300 bg-white  rounded shadow-xl w-full"
           value={input}
           placeholder="Type your question..."
           onChange={handleInputChange}
